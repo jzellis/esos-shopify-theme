@@ -1,0 +1,12 @@
+---
+:api_key: e0935a9aadeff36096a080647fbc5bc8
+:password: 4e59f5b5b6d14683eebd6b75d0aa9640
+:store: elysii-technology.myshopify.com
+:theme_id: 
+:whitelist_files:
+- layout/
+- assets/
+- config/
+- snippets/
+- templates/
+- locales/
