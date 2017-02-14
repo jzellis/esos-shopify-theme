@@ -1,13 +1,7 @@
-<div class="page-width">
-  <div class="grid">
-    <div class="grid__item medium-up--five-sixths medium-up--push-one-twelfth">
-      <div class="section-header text-center">
-        <h1>{{ page.title }}</h1>
-      </div>
-
-      <div class="rte">
-        {{ page.content }}
-      </div>
-    </div>
-  </div>
-</div>
+{% include 'theme-variables' %}
+<section id="page-wrap" class="section-wrap">
+	{% include '__containers-open' %}
+		<h1 class="page-header">{{ page_title }}</h1>
+		{% include '__formatted-content' with page.content %}
+	{% include '__containers-close' %}
+</section>

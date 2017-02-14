@@ -1,11 +1,8 @@
-<form action="/search" method="get" class="search-header search" role="search">
-  <input class="search-header__input search__input"
-    type="search"
-    name="q"
-    placeholder="{{ 'general.search.placeholder' | t }}"
-    aria-label="{{ 'general.search.placeholder' | t }}">
-  <button class="search-header__submit search__submit btn--link" type="submit">
-    {% include 'icon-search' %}
-    <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
-  </button>
+<form {% if settings.search-placement != 'sidebar' %}class="navbar-form"{% endif %} action="/search">
+  <div class="input-group">
+    <input type="search" name="q" class="form-control search-bar" autocomplete="off" placeholder="{{ 'navigation.search.search-form-placeholder' | t }}" value="{{ search.terms }}">
+    <span class="input-group-btn">
+      <input type="submit" class="btn btn-default" value="{{ 'navigation.search.search-form-button' | t }}" />
+    </span>
+  </div>
 </form>
