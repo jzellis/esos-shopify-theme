@@ -22,7 +22,7 @@
 	</div>
 
 		<div class="row" itemscope itemtype="http://data-vocabulary.org/Product">
-	
+
 			<!-- images col -->
 			<div class="col-sm-6 {% if settings.product-page-image-placement == 'right' %}col-sm-push-6{% endif %}">
 				<div class="row product-images">
@@ -46,12 +46,12 @@
 					{% endif %}
 				</div>
 			</div>
-	
+
 			<!-- details col -->
 			<div id="product-details" class="col-sm-6 {% if settings.product-page-image-placement == 'right' %}col-sm-pull-6{% endif %}">
 				<h1 class="hidden-xs" itemprop="name">{{ product.title }}</h1>
 				{% include 'product-badges' %}
-				
+
 				{% unless settings.show-price-if-zero == blank and product.price == 0 %}
 				{% if has_prices %}
 				{% if price_is_poa %}
@@ -69,12 +69,12 @@
 				</div>
 				{% endif %}
 				{% endif %}
-				
+
 				{% include 'shappify-sales-clock' with product %}
 				{% include 'product-availability' with product %}
 				{% if has_cart %}{% include 'product-add-to-cart-form' %}{% endif %}
 				{% endunless %}
-				
+
 				{% if product.metafields.custom_links.size > 0 %}
 				<ul class="custom-links">
 					{% for l in product.metafields.custom_links %}
@@ -89,11 +89,11 @@
 				{% endfor %}
 				</ul>
 				{% endif %}
-				
+
 				{% include 'product-description' %}
-				
+
 				{% include 'product-specs' %}
-      		  
+
 		  	{% unless t_reviews == true %}
 				<div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
 				{% endunless %}

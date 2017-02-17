@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body{
+  color: white;
+  background-color: black;
+  font-family: 'Open Sans', sans-serif;
+}
+body.template-index h1,h2,h3{
+  font-family: 'Cinzel Decorative', cursive;
+  color: white;
+}
+
+body.template-index h1{
+  font-size: 32pt;
+}
+
+body.template-index h3{
+  font-size: 16pt;
+}
+
+#one{
+  background-image: url('{{ 'bg1.jpg' | asset_img_url: 'master' }}');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  background-color: black
+}
+
+#two{
+  background-image: url('{{ 'bg2.jpg' | asset_img_url: 'master' }}');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+}
+
+#three{
+  background-image: url('{{ 'bg3.jpg' | asset_img_url: 'master' }}');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  padding-bottom: 4em;
+}
+
+#two h3{
+  margin: 0 auto 1em auto
+}
+
+#three h1{
+  margin-bottom: 1em
+}
+
+.lotrLogo{
+  margin: 2em auto;
+}
+
+.title > *{
+  line-height: 1em;
+  margin: 0;
+}
+
+#ringDisplay{
+  margin: 2em auto 2em auto;
+}
+
+#featureList{
+  margin-top: 2em;
+}
+#featureList li{
+  padding: 0 2em 0 2em;
+}
+
+#featurelist li *{
+  text-align: center;
+  display: inline-block
+}
+#featureList li img{
+  width: 4em;
+  margin: auto;
+}
+
+#two .q, #two .aLegend, #three .product-title{
+  color: #75881f
+}
+#two .a, #two .a li{
+  margin-bottom: 1em;
+}
+
+#three .product-list{
+  background: rgba(255,255,255,.25);
+  padding: 4px 0 4px 0;
+}
+
+#three .product-list li.product{
+padding: 4px;
+}
+
+#three .product-list li.product .product-inner-wrapper{
+background: white;
+color: black;
+padding: .5em
+}
+
+#three .purchase a.btn{
+  color: white;
+  background: #495513
+}

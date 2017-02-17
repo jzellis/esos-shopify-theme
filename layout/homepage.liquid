@@ -44,41 +44,56 @@
 <!--[if !(IE)]><!--> <body class="{% include '__body-classes' %}"> <!--<![endif]-->
 
   <div id="wrap">
-    <!--  hides the toolbar on the homepage -->
-    {% unless template == 'index' %}
-    {% include 'navbar' with 'top' %}
-    {% endunless %}
     <div id="content">
-      {% if settings.logo-placement == "above-main-content" %}{% include 'brand' %}{% endif %}
-    	{% if has_main_menu %}
-    	<div class="container">
-    		{% include 'navbar' with 'main' %}
-    	</div>
-    	{% endif %}
-      {% if settings.slider-width == "window-width" and template == "index" %}{% include 'slider' %}{% elsif settings.slider-width == "window-width" %}{% include 'banner' %}{% endif %}
-
-      {% if settings.slider-width != "window-width" or settings.show-breadcrumbs %}
-      <div class="container">
-        {% if settings.slider-width == "site-width" and template == "index" %}{% include 'slider' %}{% elsif settings.slider-width == "site-width" %}{% include 'banner' %}{% endif %}
-        {% if settings.show-breadcrumbs and template != 'index' %}{% include 'breadcrumbs' %}{% endif %}
+      <section id='one' class='row'>
+      <div class='col-md-12 col-xs-12'>
+        <div class='lotrHeader col-md-6 col-md-offset-3 col-sm-12 col-xs-12 text-center'><img class='img-responsive lotrLogo' src='{{ 'lotr_logo.png' | asset_img_url: 'master' }}'></div>
       </div>
-      {% endif %}
+      <div class='title text-center'><h1>&ldquo;My Preciousss...&rdquo;</h1></div>
+      <ul id='ringDisplay' class='text-center list-unstyled list-inline'>
+        <li class='ring'><img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=Black+%20+Ring&w=200&h=200"></li>
+        <li class='ring'><img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=Bronze+%20+Ring&w=200&h=200"></li>
+        <li class='ring'><img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=Wood+%20+Ring&w=200&h=200"></li>
+      </ul>
 
-		{% if has_sidebar and settings[sidebar_template] %}
-			{% unless has_window_width_thumbnail_container %}<div class="container"><div class="row">{% endunless %}
-			<div class="main-content {% include '__main-span' %}">
-		{% endif %}
-		{% if settings.slider-width == "main-content-width" and template == "index" %}{% include 'slider' %}{% elsif settings.slider-width == "main-content-width" %}{% include 'banner' %}{% endif %}
+  <h3 class='text-center'>The One Ring for contactless payments &amp; mobile interaction</h3>
+      <ul id='featureList' class='text-center list-unstyled list-inline'>
+        <li><img src='{{'icon-nowifi.png' | asset_img_url: '200x'}}'><div class='small'>No Wifi</div></li>
+        <li><img src='{{'icon-nobattery.png' | asset_img_url: '200x'}}'><div class='small'>No Batteries</div></li>
+        <li><img src='{{'icon-waterproof.png' | asset_img_url: '200x'}}'><div class='small'>Waterproof</div></li>
+        <li><img src='{{'icon-reloadable.png' | asset_img_url: '200x'}}'><div class='small'>Reloadable</div></li>
+        <li><img src='{{'icon-connectcard.png' | asset_img_url: '200x'}}'><div class='small'>Connect a Card</div></li>
+        <ul>
+    </section>
+    <section id='two' class='row'>
+      <h1 class='text-center'>About My Preciousss...</h1>
+      <h3 class='text-center'>with Elysii Inside</h3>
 
-		{{ content_for_layout }}
-
-		{% if has_sidebar and settings[sidebar_template] %}
-			</div>
-			{% include 'sidebar' %}
-			{% unless has_window_width_thumbnail_container %}</div></div>{% endunless %}
-		{% endif %}
+      <div id='copy' class='col-md-8 col-md-offset-2 col-xs-12 col-sm-12'>
+      {{ content_for_layout }}
     </div>
-    {% include 'footer' %}
+    </section>
+    <section id='three' class='row'>
+      <h1 class='text-center'>Get Your Ring</h1>
+      <ul class='product-list col-md-6 col-md-offset-3 col-sm-12 col-xs-12 list-unstyled list-inline row text-center'>
+        {% for product in collections.frontpage.products %}
+        <li class='col-md-4 product'>
+          <div class='product-inner-wrapper'>
+            <div class='product-image'>
+              <img src='{{product.featured_image.src | img_url: '200x200'}}' alt='{{product.title}}'>
+            </div>
+            <div class='product-title'>{{product.title}}</div>
+
+            <div class='product-description'>{{product.description}}</div>
+            <div class='product-price'>{{product.price | money_with_currency}}</div>
+            <div class='purchase'><a class='btn'>Purchase now <i class='glyphicon glyphicon-triangle-right'></i></a></div>
+          </div>
+        </li>
+        {% endfor %}
+      </div>
+
+    </section>
+    </div>
   </div>
 
   {% include 'option-select-callback' %}
@@ -112,16 +127,6 @@
       $('.handle_{{ current_handle }}').parents('.collapse').addClass('in');
     {% endunless %}
 
-  	{% if settings.instagram-feed and settings.instagram-client-id != blank %}
-  	  if(instagramThumbnailClass === undefined){
-    		var instagramThumbnailClass = "{% include '__thumbnail-span' %}";
-    	}
-    	$(function(){
-  			$('#instagram-widget').bootstrapifyInstagram({
-  				thumbClass: instagramThumbnailClass
-  			});
-  		});
-  	{% endif %}
 
     {% if thumbnail_layout == 'masonry' %}
       var $container = $('.masonry-collection').imagesLoaded(function(){
@@ -148,14 +153,6 @@
       });
     {% endif %}
 
-    $(document).ready(function(){
-      $('.search-bar').typeahead({
-        name: 'Products',
-        local: [{{ typeahead }}]
-      }).on('typeahead:selected', function (object, datum) {
-        $(this).closest('form').submit();
-      });
-    });
 
 	{% if settings.ajax-cart %}
 		$(document).ajaxCart();
