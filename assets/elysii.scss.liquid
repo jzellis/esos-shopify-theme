@@ -1,22 +1,30 @@
 @import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-body{
+body.template-index {
   color: white;
   background-color: black;
   font-family: 'Open Sans', sans-serif;
 }
-body.template-index h1,h2,h3{
+body h1,h2,h3{
   font-family: 'Cinzel Decorative', cursive;
+
+}
+
+body.template-index h1,h2,h3{
   color: white;
 }
 
-body.template-index h1{
+body  h1{
   font-size: 32pt;
 }
 
-body.template-index h3{
+body h3{
   font-size: 16pt;
+}
+
+img.conservancyLogo{
+  margin: 0 auto .5em auto;
 }
 
 #one{
@@ -24,7 +32,10 @@ body.template-index h3{
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
-  background-color: black
+  background-color: black;
+}
+
+#fg{
 }
 
 #two{
@@ -32,14 +43,16 @@ body.template-index h3{
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
+
 }
 
-#three{
+#three, body.template-product{
   background-image: url('{{ 'bg3.jpg' | asset_img_url: 'master' }}');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
   padding-bottom: 4em;
+
 }
 
 #two h3{
@@ -50,9 +63,6 @@ body.template-index h3{
   margin-bottom: 1em
 }
 
-.lotrLogo{
-  margin: 2em auto;
-}
 
 .title > *{
   line-height: 1em;
@@ -60,48 +70,205 @@ body.template-index h3{
 }
 
 #ringDisplay{
-  margin: 2em auto 2em auto;
+  display: block;
+  position: relative;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  text-align: center;
+    overflow: hidden;
+}
+
+#ringDisplay video{
+  margin-top: -135px;
+  width: 100%;
+  margin-bottom: -15%;
+}
+
+
+.q{
+  cursor:pointer;
 }
 
 #featureList{
   margin-top: 2em;
 }
 #featureList li{
-  padding: 0 2em 0 2em;
+  padding: 0 20px 0 20px;
 }
 
+@media only screen and (max-device-width: 800px) {
+  #featureList li{
+    width: 18%;
+    vertical-align: top;
+    padding: 0 5px;
+    font-size: 0.8em;
+  }
+
+  .lotrHeader{
+    margin: 0 auto 2em 0
+  }
+}
+
+.lotrHeader{
+  font-family: 'Cinzel Decorative', cursive;
+
+  margin-bottom: 2em;
+}
+
+.lotrHeader *{
+  color: #F3ED95;
+}
+.lotrHeader h2{
+  font-size: 28px !important;
+  margin: 0 2em auto 0 auto;
+}
 #featurelist li *{
   text-align: center;
   display: inline-block
 }
 #featureList li img{
-  width: 4em;
   margin: auto;
 }
 
-#two .q, #two .aLegend, #three .product-title{
+.q{
+  text-align: center;
+  font-variant: small-caps;
+  font-size: 1.25em;
+}
+.q, .aLegend{
+  color: #9ab329;
+}
+
+.a{text-align: center}
+
+body.page-purchase .product-title, .product-price,  .product-price .money, .plant, .plant a{
   color: #75881f
+}
+
+.product-price{
+  text-shadow: none;
+  font-weight: normal;
+}
+
+.product-list .product-title{
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 1.25em;
+}
+
+.product-list .btn-default{
+  background-color: #3a4507;
+  text-transform: uppercase;
+}
+
+.purchaseYourRing{
+  background-color: #3a4507;
+  border-radius: 1em;
+  padding: 2em 4em;
+  text-align: center;
+  font-family: 'Cinzel Decorative',cursive;
+  font-size: 1.5em;
+  box-shadow: inset 0px 0px 5px 10px rgba(255,255,255,.1)
+}
+.plant{
+  font-size: 1.25em;
+}
+.plant a{
+  text-decoration: underline
 }
 #two .a, #two .a li{
   margin-bottom: 1em;
 }
 
-#three .product-list{
+body.page-purchase .product-list{
   background: rgba(255,255,255,.25);
   padding: 4px 0 4px 0;
 }
 
-#three .product-list li.product{
+body.page-purchase .product-list li.product{
 padding: 4px;
 }
 
-#three .product-list li.product .product-inner-wrapper{
+body.page-purchase .product-list li.product .product-inner-wrapper{
 background: white;
 color: black;
-padding: .5em
+padding: .5em;
+
 }
 
-#three .purchase a.btn{
+body.page-purchase .product-list li.product .product-inner-wrapper .product-description{
+height: 6em;
+min-height: 6em;
+overflow: auto;
+}
+
+body.page-purchase .purchase a.btn, .purchase-btn{
   color: white;
-  background: #495513
+  background: #495513;
+  border: none;
+  font-family: 'Cinzel Decorative',cursive;
+}
+
+#fellowship{
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  right: 20px;
+  border-radius: 2px;
+  padding: 1em;
+  width: 150px;
+  font-size: 0.8em;
+
+}
+
+#fellowship, #fellowshipBottom, #fellowshipBanner{
+  background: #3a4507;
+  color: white;
+  text-align: center;
+}
+
+#fellowshipBanner{
+  font-size: 0.8em;
+}
+
+#fellowshipBottom, #fellowshipBanner{
+  padding-bottom: 1em;
+
+}
+#fellowship h3{
+  margin-top: .75em;
+  margin-bottom: 0;
+}
+
+#fellowship h4{
+  color: white;
+  font-size: 0.8em;
+}
+
+#fellowship .btn, #fellowshipBottom .btn{
+  background: #495513;
+  border: none;
+  color: white;
+}
+
+.floating{
+  position: fixed;
+  top: 50%;
+}
+
+#floatingMenu{
+  right: 10px;
+}
+
+.floating .icon-background{
+  color: #495513;
+}
+
+
+
+
+/* Product Page */
+
+#footer{
+  text-color: #ccc;
+  padding: 1em;
 }

@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body.template-index {
+  color: white;
+  background-color: black;
+  font-family: 'Open Sans', sans-serif;
+}
+body h1,h2,h3{
+  font-family: 'Cinzel Decorative', cursive;
+
+}
+
+body.template-index h1,h2,h3{
+  color: white;
+}
+
+body  h1{
+  font-size: 32pt;
+}
+
+body h3{
+  font-size: 16pt;
+}
+
+img.conservancyLogo{
+  margin: 0 auto .5em auto;
+}
+
+#one{
+  background-image: url('{{ 'bg1.jpg' | asset_img_url: 'master' }}');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  background-color: black;
+}
+
+#fg{
+}
+
+#two{
+  background-image: url('{{ 'bg2.jpg' | asset_img_url: 'master' }}');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+
+}
+
+#three, body.template-product{
+  background-image: url('{{ 'bg3.jpg' | asset_img_url: 'master' }}');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  padding-bottom: 4em;
+
+}
+
+#two h3{
+  margin: 0 auto 1em auto
+}
+
+#three h1{
+  margin-bottom: 1em
+}
+
+
+.title > *{
+  line-height: 1em;
+  margin: 0;
+}
+
+#ringDisplay{
+  display: block;
+  position: relative;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  text-align: center;
+    overflow: hidden;
+}
+
+#ringDisplay video{
+  margin-top: -15%;
+  width: 100%;
+  margin-bottom: -15%;
+}
+
+
+.q{
+  cursor:pointer;
+}
+
+#featureList{
+  margin-top: 2em;
+}
+#featureList li{
+  padding: 0 20px 0 20px;
+}
+
+@media only screen and (max-device-width: 800px) {
+  #featureList li{
+    width: 18%;
+    vertical-align: top;
+    padding: 0 5px;
+    font-size: 0.8em;
+  }
+
+  .lotrHeader{
+    margin: 0 auto 2em 0
+  }
+}
+
+.lotrHeader{
+  font-family: 'Cinzel Decorative', cursive;
+
+  margin-bottom: 2em;
+}
+
+.lotrHeader h2{
+  font-size: 28px !important;
+  margin: 0 2em auto 0 auto;
+}
+#featurelist li *{
+  text-align: center;
+  display: inline-block
+}
+#featureList li img{
+  margin: auto;
+}
+
+.q{
+  text-align: center;
+  font-variant: small-caps;
+  font-size: 1.25em;
+}
+.q, .aLegend{
+  color: #9ab329;
+}
+
+body.page-purchase .product-title, .product-price,  .product-price .money, .plant, .plant a{
+  color: #75881f
+}
+
+.product-price{
+  text-shadow: none;
+  font-weight: normal;
+}
+
+.plant{
+  font-size: 1.25em;
+}
+.plant a{
+  text-decoration: underline
+}
+#two .a, #two .a li{
+  margin-bottom: 1em;
+}
+
+body.page-purchase .product-list{
+  background: rgba(255,255,255,.25);
+  padding: 4px 0 4px 0;
+}
+
+body.page-purchase .product-list li.product{
+padding: 4px;
+}
+
+body.page-purchase .product-list li.product .product-inner-wrapper{
+background: white;
+color: black;
+padding: .5em;
+
+}
+
+body.page-purchase .product-list li.product .product-inner-wrapper .product-description{
+height: 6em;
+min-height: 6em;
+overflow: auto;
+}
+
+body.page-purchase .purchase a.btn, .purchase-btn{
+  color: white;
+  background: #495513
+}
+
+#fellowship{
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  right: 20px;
+  border-radius: 2px;
+  padding: 1em;
+  width: 150px;
+  font-size: 0.8em;
+
+}
+
+#fellowship, #fellowshipBottom, #fellowshipBanner{
+  background: #3a4507;
+  color: white;
+  text-align: center;
+}
+
+#fellowshipBanner{
+  font-size: 0.8em;
+}
+
+#fellowshipBottom, #fellowshipBanner{
+  padding-bottom: 1em;
+
+}
+#fellowship h3{
+  margin-top: .75em;
+  margin-bottom: 0;
+}
+
+#fellowship h4{
+  color: white;
+  font-size: 0.8em;
+}
+
+#fellowship .btn, #fellowshipBottom .btn{
+  background: #495513;
+  border: none;
+  color: white;
+}
+
+.floating{
+  position: fixed;
+  top: 50%;
+}
+
+#floatingMenu{
+  right: 10px;
+}
+
+.floating .icon-background{
+  color: #495513;
+}
+
+
+
+
+/* Product Page */
+
+#footer{
+  text-color: #ccc;
+  padding: 1em;
+}

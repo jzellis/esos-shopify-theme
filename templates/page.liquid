@@ -3,7 +3,7 @@
 	{% include '__containers-open' %}
 
 	{% unless template == 'index' %}
-		<h1 class="page-header">{{ page_title }}</h1>
+		<h1 class="col-md-12 page-header">{{ page_title }}</h1>
 		{% endunless %}
 		{% include '__formatted-content' with page.content %}
 	{% include '__containers-close' %}

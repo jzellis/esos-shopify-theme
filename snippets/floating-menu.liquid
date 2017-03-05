@@ -1,0 +1,11 @@
+<div id='floatingMenu' class='floating text-center'>
+  <span class="fa-stack fa-2x" data-toggle='collapse' href='#hiddenmenu'>
+    <i class="fa fa-circle fa-stack-2x icon-background"></i>
+    <i class="fa fa-bars fa-stack-1x"></i>
+  </span>
+<ul id='hiddenmenu' class='collapse list-unstyled'>
+  {% for link in linklists.floating-menu.links %}
+  <li class='text-right'> <a href="{{ link.url }}">{{ link.title }}</a></li>
+  {% endfor %}
+</ul>
+</div>

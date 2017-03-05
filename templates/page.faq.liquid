@@ -1,0 +1,12 @@
+{% layout 'faq' %}
+
+{% include 'theme-variables' %}
+<section id="page-wrap" class="section-wrap">
+	{% include '__containers-open' %}
+
+	{% unless template == 'index' %}
+		<h1 class="page-header col-md-6 col-md-offset-3 col-xs-12 col-sm-12">{{ page_title }}</h1>
+		{% endunless %}
+		{% include '__formatted-content' with page.content %}
+	{% include '__containers-close' %}
+</section>

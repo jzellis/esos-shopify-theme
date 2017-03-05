@@ -5,8 +5,16 @@
   			{% for v in product.variants %}
   			<option value="{{ v.id }}"{% if v == product.selected_or_first_available_variant %} selected="selected"{% endif %}>{{ v.title }}</option>
   			{% endfor %}
+
   		</select>
+<div id='initialsWrapper' style='display:none; margin-bottom: 1em'><label for="initials">Initials<br>
+  <span class='small'>(Limit 3 characters, font is Times New Roman)</span></label>
+  <div style='width: 6em'>
+<input class='form-control input-lg' size='3' maxlength='3' type="text" id="initials" name="properties[Initials]">
+</div>
+</div>
   	</div>
+
   	{% if product.metafields.properties.size > 0 %}
   	<div class="col-xs-12 col-lg-6">
   	{% for l_item in product.metafields.properties %}
@@ -35,22 +43,23 @@
   	</div>
   	{% endif %}
   </div>
-  
+
   <div class="row">
-  	<div class="col-sm-4 quantity-wrap">
+  	<div class="col-sm-2 quantity-wrap">
       {% unless price_is_poa %}
   	  <div class="form-group">
   	    {% include '_product-max-qty' with product %}
+        <label>Quantity</label>
     		<input class="form-control input-lg" type="number" id="quantity" placeholder="Quantity" name="quantity" value="1" min="0"{% if product_max_qty %} max="{{ product_max_qty }}"{% endif %} />
   	  </div>
     	{% endunless %}
   	</div>
-  	<div class="col-sm-8 add-to-cart-button-wrap">
-    	{% unless price_is_poa %}
+  </div>
+  <div class='row'>
+  	<div class="col-sm-4 add-to-cart-button-wrap">
   	  <div class="form-group">
     		<input type="submit" name="add" value="{% include '__localize' with 'Add to cart' %}" id="purchase" class="purchase-btn" />
   	  </div>
-      {% endunless %}
       {% if settings.secondary-call-to-action-url != blank %}
       <p class="secondary-call-to-action"><br><em>{% include '__localize' with 'Not quite what you are after?' %}</em><br><a href="{{ settings.secondary-call-to-action-url }}?title={{ product.title | replace: ' ', '%20' }}&handle={{ product.handle }}"><strong>{% include '__localize' with 'Contact us for variations' %}</strong></a></p>
       {% endif %}
@@ -60,7 +69,7 @@
         {% capture tweet %}https://twitter.com/intent/tweet?text={% include '__localize' with 'Check out' %} {{ page_title }}—{{ canonical_url }}{% unless settings.social-links-twitter == blank %} (via @{{ settings.social-links-twitter | split: '/' | last }}){% endunless %}{% endcapture %}
         {% capture email_subject %}{% include '__localize' with 'Check out' %} {{ page_title }}{% endcapture %}
         {% capture email_body %}{% include '__localize' with 'Hey' %}, {% include '__localize' with 'I was just looking at' %} {{ page_title }} {% include '__localize' with 'on' %} {{ shop.name }} {% include '__localize' with 'and wanted to share it with you' %}. {% include '__localize' with 'Check out' %} {{ canonical_url }}{% endcapture %}
-        Share: 
+        Share:
         <a href="{{ tweet | replace: ' ','%20' }}" target="_blank"><i class="fa fa-twitter fa-fw"></i></a>
         <a href="https://www.facebook.com/sharer/sharer.php?u={{ canonical_url }}" target="_blank"><i class="fa fa-facebook fa-fw"></i></a>
         <a href="http://pinterest.com/pin/create/button/?url={{ canonical_url }}&media={{ product.featured_image.src | product_img_url: '2048x2048' }}&description={{ page_title | replace: ' ','%20' }}" target="_blank"><i class="fa fa-pinterest fa-fw"></i></a>
@@ -94,10 +103,89 @@
 </div>
 <hr>
 {% endif %}
-
+<style>
+optgroup[label]{
+  font-size: small;
+}
+</style>
 <script>
+
+$(document).ready(function(){
+
+
+})
   jQuery(function() {
+
+
+
     // option selectors extended with boostrap markup and link options
+
     new Shopify.BootstrapifyOptionSelectors("{% include '__advanced-layout-id' with 'product-select' %}", { product: {{ product | json }}, onVariantSelected: selectCallback, enableHistoryState: true{% unless settings.show-unavailable-products %}, linkOptions: true {% endunless %}});
+
+    $('label[for="product-select-option-2"]').html("Choose Elvish Script or Initials<br><span class='small'>(ME Logo Only on Treebeard)<span>");
+
+    $('#product-select-option-1 option').slice('7').wrapAll("<optgroup label='Special Order Sizes'>");
+
+
+    $('select').on('change',function(){
+
+      $('#product-select-option-1 optgroup').children().unwrap();
+      $('#product-select-option-1 option').slice('7').wrapAll("<optgroup label='Special Order Sizes'>");
+
+
+
+    })
+    //
+    // $('#product-select-option-1 option[value="5"]').before("<optgroup label='Special Order Sizes'>");
+    // $('#product-select-option-1 option[value="20"]').after("</optgroup>");
+    //
+    // $('select').on('change', function(){
+    //   $('optgroup option').unwrap('optgroup');
+    //   $('#product-select-option-1 option[value="5"]').before("<optgroup label='Special Order Sizes'>");
+    //   $('#product-select-option-1 option[value="20"]').after("</optgroup>");
+    //
+    // })
+
+    var sizeDisclaimer = "<div id='sizeDisclaimer' class='small' style='margin-bottom: 1em; display:none'>Special Order Size - Additional 5 Business Days to Delivery</div>";
+    $('#product-select-option-1').after(sizeDisclaimer);
+
+    $('label[for="product-select-option-0"]').text("Choose Ring Type");
+    if($('#product-select-option-2').val() === 'Initials'){
+      $('#initialsWrapper').slideDown();
+    }else{
+      $('#initialsWrapper').hide();
+    }
+
+    if(parseInt($('#product-select-option-1').val()) < 7 || parseInt($('#product-select-option-1').val()) > 13){
+      $('#sizeDisclaimer').slideDown();
+    }else{
+      $('#sizeDisclaimer').hide();
+
+    }
+
+    $('#product-select-option-1').on('change',function(e){
+      if(parseInt($(e.currentTarget).val()) < 7 || parseInt($(e.currentTarget).val()) > 13){
+        $('#sizeDisclaimer').slideDown();
+      }else{
+        $('#sizeDisclaimer').hide();
+
+      }
+    })
+
+    $('#product-select-option-2').on('change',function(e){
+      if($(e.currentTarget).val() === 'Initials'){
+        $('#initialsWrapper').slideDown();
+      }else{
+        $('#initialsWrapper').hide();
+      }
+    })
+      $('#product-details h1:first').text($('#product-select-option-0').val());
+
+    $('#product-select-option-0').on('change',function(e){
+      newText = $(e.currentTarget).val();
+      newText == "Treebeard" ? newText = newText + "&trade;" : newText;
+        $('#product-details h1:first').html(newText);
+    })
+
   });
 </script>

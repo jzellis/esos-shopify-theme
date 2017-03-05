@@ -78,20 +78,30 @@
       </div>
       <div class="row">
         <div class="form-group col-sm-8 col-md-9">
-          <h4>{% include '__localize' with 'Any comments or special instructions?' %}</h4>
+          <h4>Terms &amp; Conditions</h4>
+          <div class='small tAndc'>
+            <ol>
+              <li>Rings personalized with initials cannot be replaced due to lettering errors, please make sure the initials are correct and in the right order. Letters are capitalized.</li>
+<li>Rings may be returned for full credit for any reason within 3 calendar days of delivery. We send a pre-paid return form in the box. Excludes shipping charges.</li>
+<li>Rings may be exchanged for another device within 1 year if there is any issue with internal components. We'll send you a pre-paid return label and ship a replacement right away.</li>
+<li>Rings are guaranteed waterproof for 1 year which means a Ring should be fine if immersed in water no more than 30 minutes, up to 1 meter deep. Does not apply to</li>
+<li>Wear and Tear - If the Ring exterior cracks or chips through normal wear & tear within 6 months, we will replace the device. Please do not battle Orcs while wearing Ring.</li>
+<li>Don't let Sauron scare you, he's dead anyway. These Rings induce feelings of happiness, fun and allow you to do cool stuff.</li>
+</div>
+          <!-- <h4>{% include '__localize' with 'Any comments or special instructions?' %}</h4>
           <div class="collapse in cart-note-action">
             <a href="#cart-note" class="btn btn-default" data-toggle="collapse">Add note</a>
           </div>
           <div class="collapse cart-note" id="cart-note">
             <textarea id="note" name="note" class="form-control" rows="3">{{ cart.note }}</textarea>
-          </div>
+          </div> -->
         </div>
-    
+
         <div class="form-actions text-right col-sm-4 col-md-3">
           <div class="product-price"><small>{% include '__localize' with 'Sub-total' %}</small> <span class='money'>{{ cart.total_price | money_with_currency | replace: ' ','&nbsp' }}</span></div>
-          
+
           {% include 'free-shipping-message' %}
-		  
+
 		  {% if settings.show-agree-with-terms-and-conditions-checkbox %}
 		  {% comment %}Need to tidy this up{% endcomment %}
 		  <p style="float:none; text-align:right; clear: both; margin: 10px 0;">
@@ -99,7 +109,7 @@
 			  <label for="agree">{% include '__localize' with 'I agree with the terms and conditions.' %}</label>
 		  </p>
 		  {% endif %}
-          
+
           {% if settings.ajax-cart %}
           <input type="submit" name="checkout" value="{% include '__localize' with 'Checkout' %}" class="btn btn-primary btn-block" />
           {% else %}

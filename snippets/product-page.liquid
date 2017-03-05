@@ -32,7 +32,7 @@
 						</div>
 					</div>
 					{% if product.images.size > 1 %}
-					{% for image in product.images %}
+					<!-- {% for image in product.images %}
 					<div class="col-xs-4">
 						<div class="thumbnail">
 							<div class="thumbnail-image product-main-thumb">
@@ -42,14 +42,18 @@
 							</div>
 						</div>
 					</div>
-					{% endfor %}
+					{% endfor %} -->
 					{% endif %}
 				</div>
 			</div>
 
 			<!-- details col -->
 			<div id="product-details" class="col-sm-6 {% if settings.product-page-image-placement == 'right' %}col-sm-pull-6{% endif %}">
+
 				<h1 class="hidden-xs" itemprop="name">{{ product.title }}</h1>
+
+				{% include 'product-description' %}
+
 				{% include 'product-badges' %}
 
 				{% unless settings.show-price-if-zero == blank and product.price == 0 %}
@@ -67,6 +71,10 @@
 					<meta itemprop="currency" content="{{ shop.currency }}" />
 					<meta itemprop="identifier" content="sku:{{ product.variants.first.sku }}" />
 				</div>
+				<div style='margin-bottom: 1em'>
+			<a class='small' href="{{'ring_sizing_tool.pdf' | asset_url}}">(ring sizing PDF)</a>
+		</div>
+
 				{% endif %}
 				{% endif %}
 
@@ -90,7 +98,6 @@
 				</ul>
 				{% endif %}
 
-				{% include 'product-description' %}
 
 				{% include 'product-specs' %}
 

@@ -45,11 +45,10 @@
 
   <div id="wrap">
     <!--  hides the toolbar on the homepage -->
-    {% unless template == 'index' %}
+    {% if template == 'product' %}
     {% include 'navbar' with 'top' %}
-    {% endunless %}
+    {% endif %}
     <div id="content">
-      {% if settings.logo-placement == "above-main-content" %}{% include 'brand' %}{% endif %}
     	{% if has_main_menu %}
     	<div class="container">
     		{% include 'navbar' with 'main' %}
@@ -78,7 +77,6 @@
 			{% unless has_window_width_thumbnail_container %}</div></div>{% endunless %}
 		{% endif %}
     </div>
-    {% include 'footer' %}
   </div>
 
   {% include 'option-select-callback' %}

@@ -2,7 +2,8 @@
 <html>
 <head>
   {% include 'meta' %}
-
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png" />
   {{ '_base.scss.css' | asset_url | stylesheet_tag }}
   {{ 'elysii.scss.css' | asset_url | stylesheet_tag }}
@@ -43,59 +44,72 @@
 <!--[if IE]><body class="{% include '__body-classes' %} ie"> <![endif]-->
 <!--[if !(IE)]><!--> <body class="{% include '__body-classes' %}"> <!--<![endif]-->
 
+{% include 'fellowship-banner' %}
+
+<div class='container-fluid'>
+{% include 'fellowship' %}
   <div id="wrap">
     <div id="content">
       <section id='one' class='row'>
+<div id='fg'>
       <div class='col-md-12 col-xs-12'>
-        <div class='lotrHeader col-md-6 col-md-offset-3 col-sm-12 col-xs-12 text-center'><img class='img-responsive lotrLogo' src='{{ 'lotr_logo.png' | asset_img_url: 'master' }}'></div>
-      </div>
-      <div class='title text-center'><h1>&ldquo;My Preciousss...&rdquo;</h1></div>
-      <ul id='ringDisplay' class='text-center list-unstyled list-inline'>
-        <li class='ring'><img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=Black+%20+Ring&w=200&h=200"></li>
-        <li class='ring'><img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=Bronze+%20+Ring&w=200&h=200"></li>
-        <li class='ring'><img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=Wood+%20+Ring&w=200&h=200"></li>
-      </ul>
+        <div class='lotrHeader col-md-6 col-md-offset-3 col-sm-12 col-xs-12 text-center'>
+          <img class='img-responsive lotrLogo' src='{{ 'lotr_logo.png' | asset_img_url: 'master' }}'>
+        </div>
+        <div id='ringDisplay' class='col-md-offset-2 col-md-8 col-xs-12 col-sm-12 text-center list-unstyled list-inline'>
+          <!-- <div style='width: 700px; margin: auto; overflow;hidden'> -->
+            <video width="800" height="469" muted loop preload="autoplay">
+            <source src="{{'rings.mp4' | asset_url}}"  type="video/mp4">
+          </video>
+        <!-- </div> -->
+        </div>
+        <div class='lotrHeader col-md-6 col-md-offset-3 col-sm-12 col-xs-12 text-center'>
 
-  <h3 class='text-center'>The One Ring for contactless payments &amp; mobile interaction</h3>
+        <h2 style='margin-top: -0.5em;' class='text-center col-md-12 col-xs-12'>
+        My Preciousss&trade;<br>
+        <span style='font-size: 16pt'>with Elysii Inside&trade;</span>
+      </h2>
+      </div>
+        </div>
+
+      </div>
+      <div class='row'>
+        <h3 style='color: #F3ED95;'class='text-center col-md-8 col-md-offset-2'><br>;<b>The One Ring&trade;</b> for contactless payments &amp; mobile interaction</h3>
+
+
+</div>
       <ul id='featureList' class='text-center list-unstyled list-inline'>
-        <li><img src='{{'icon-nowifi.png' | asset_img_url: '200x'}}'><div class='small'>No Wifi</div></li>
-        <li><img src='{{'icon-nobattery.png' | asset_img_url: '200x'}}'><div class='small'>No Batteries</div></li>
-        <li><img src='{{'icon-waterproof.png' | asset_img_url: '200x'}}'><div class='small'>Waterproof</div></li>
-        <li><img src='{{'icon-reloadable.png' | asset_img_url: '200x'}}'><div class='small'>Reloadable</div></li>
-        <li><img src='{{'icon-connectcard.png' | asset_img_url: '200x'}}'><div class='small'>Connect a Card</div></li>
+        <li><img class='img-responsive center-block' src='{{'icon-nowifi.png' | asset_img_url: '200x'}}'><div class='small'>No Wifi</div></li>
+        <li><img class='img-responsive center-block' src='{{'icon-nobattery.png' | asset_img_url: '200x'}}'><div class='small'>No Batteries</div></li>
+        <li><img class='img-responsive center-block' src='{{'icon-waterproof.png' | asset_img_url: '200x'}}'><div class='small'>Waterproof</div></li>
+        <li><img class='img-responsive center-block' src='{{'icon-reloadable.png' | asset_img_url: '200x'}}'><div class='small'>Reloadable</div></li>
+        <li><img class='img-responsive center-block' src='{{'icon-connectcard.png' | asset_img_url: '200x'}}'><div class='small'>Connect a Card</div></li>
         <ul>
+        </div>
+        <div class='clear' style='position:relative;clear:both'></div>
     </section>
     <section id='two' class='row'>
-      <h1 class='text-center'>About My Preciousss...</h1>
-      <h3 class='text-center'>with Elysii Inside</h3>
+      <h2 class='text-center'>FAQs</h2>
 
-      <div id='copy' class='col-md-8 col-md-offset-2 col-xs-12 col-sm-12'>
+      <div id='copy' class='col-md-6 col-md-offset-3 col-xs-12 col-sm-12 text-center'>
       {{ content_for_layout }}
     </div>
     </section>
     <section id='three' class='row'>
-      <h1 class='text-center'>Get Your Ring</h1>
-      <ul class='product-list col-md-6 col-md-offset-3 col-sm-12 col-xs-12 list-unstyled list-inline row text-center'>
-        {% for product in collections.frontpage.products %}
-        <li class='col-md-4 product'>
-          <div class='product-inner-wrapper'>
-            <div class='product-image'>
-              <img src='{{product.featured_image.src | img_url: '200x200'}}' alt='{{product.title}}'>
-            </div>
-            <div class='product-title'>{{product.title}}</div>
 
-            <div class='product-description'>{{product.description}}</div>
-            <div class='product-price'>{{product.price | money_with_currency}}</div>
-            <div class='purchase'><a class='btn'>Purchase now <i class='glyphicon glyphicon-triangle-right'></i></a></div>
-          </div>
-        </li>
-        {% endfor %}
-      </div>
+      <a href='{{all_products.my-preciousss.url}}'>
+        <div class='col-md-6 col-md-offset-3 col-xs-12 col-sm-12 purchaseYourRing'>
+          Personalize &amp; Purchase Your Preciousss
+        </div>
+      </a>
 
     </section>
     </div>
+    {% include 'fellowship-bottom' %}
+    {% include 'footer' %}
   </div>
-
+  {% include 'facebook-icon' %}
+  {% include 'floating-menu' %}
   {% include 'option-select-callback' %}
   {% include 'currencies' %}
   {{ '_base.js' | asset_url | script_tag }}
@@ -123,6 +137,12 @@
   {% endif %}
 
   <script type="text/javascript">
+
+$(window).on("load", function() {
+  $('#ringDisplay video').each(function(){this.play();});
+});
+
+
     {% unless current_handle == blank %}
       $('.handle_{{ current_handle }}').parents('.collapse').addClass('in');
     {% endunless %}
@@ -158,5 +178,6 @@
 		$(document).ajaxCart();
 	{% endif %}
   </script>
+</div>
 </body>
 </html>
